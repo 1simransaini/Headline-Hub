@@ -1,16 +1,11 @@
 const express= require('express')
 const newsRouter = express.Router()
-//axios help us in error handling and data is passed in json file, help in api
-//for starting out and use api we will include axios
 const axios=require('axios');
-
-//This FUNCTION IS TO RENDER OUR NEWS PAGE that is news.ejs
-//news.ejs ki saari javascript idhar hai
 
 newsRouter.get('', async (req, res) => {
     // res.render('news')
     try {
-        const newsAPI = await axios.get(`https://newsapi.org/v2/top-headlines?country=in&apiKey=e135bb2784654328902b411393451d44`);
+        const newsAPI = await axios.get(`https://newsapi.org/v2/top-headlines?country=in&apiKey=YOUR_API_KEY`);
         // console.log(newsAPI.data)
         res.render('news', { articles: newsAPI.data.articles });
     } catch (err) {
@@ -34,7 +29,7 @@ newsRouter.get('', async (req, res) => {
 newsRouter.post('', async(req, res) => {
     let search = req.body.search
     try {
-        const newsAPI = await axios.get(`http://newsapi.org/v2/everything?q=${search}&apiKey=e135bb2784654328902b411393451d44`)
+        const newsAPI = await axios.get(`http://newsapi.org/v2/everything?q=${search}&apiKey=YOUR_API_KEY`)
         res.render('newsSearch', { articles : newsAPI.data.articles })
     } catch (err) {
         if(err.response) {
