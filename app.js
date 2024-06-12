@@ -28,6 +28,3 @@ app.use('/', newsRouter); // this is for the home page -> home page we will get 
 
 // Listen on port 5000
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
-
-//Your API key is: e135bb2784654328902b411393451d44
